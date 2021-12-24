@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单输入绑定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- 使用v-model创建双向数据绑定 -->
+    <!-- v-model会忽略所有表单元素的value checked selected的初始值 -->
+    <!-- 因此在vue的data中声明初始值 -->
+    <span>文本: {{message}}</span><br/>
+    <input v-model="message" placeholder="edit me"><br/>
+    <br/>
+
+    <span style="white-space: pre-line;">多行文本: {{message1}}</span><br/>
+    <textarea v-model="message1" placeholder="add multiple lines"></textarea><br/>
+    <br/>
+
+    <span>单选框: </span>
+    <label for="checkbox">{{checked}}</label><br/>
+    <input type="checkbox" id="checkbox" v-model="checked"><br/>
+    <br/>
+
+    <span>多选框: {{checkedGroup}}</span><br/>
+    <input type="checkbox" id="a" value="A" v-model="checkedGroup"/>
+    <label for="a">A</label>
+    <input type="checkbox" id="b" value="B" v-model="checkedGroup"/>
+    <label for="b">B</label>
+    <input type="checkbox" id="c" value="C" v-model="checkedGroup"/>
+    <label for="c">C</label><br/>
+    <br/>
+
+    <span>单选按钮: {{picked}}</span><br/>
+    <input type="radio" id="one" value="One" v-model="picked"/>
+    <label for="one">One</label>
+    <input type="radio" id="two" value="Two" v-model="picked"/>
+    <label for="two">Two</label><br/>
+    <br/>
+
+    <!-- 推荐提供一个值为空的禁用选项 -->
+    <span>选择框: {{selected1}}</span><br/>
+    <select v-model="selected1">
+        <option disabled value="">请选择</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select><br/>
+    <br/>
+
+    <span>选择框(多选): {{selected2}}</span><br/>
+    <select v-model="selected2" multiple style="width: 60px;">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select><br/>
+    <br/>
+
+    <!-- 使用v-for动态渲染 -->
+    <span>选择框: {{selected3}}</span><br/>
+    <select v-model="selected3">
+        <option disabled value="">请选择</option>
+        <!-- v-for 指定文本 -->
+        <!-- v-bind:value 指定选中后的值 -->
+        <option v-for="option in options" v-bind:value="option.value">
+            {{option.text}}
+        </option>
+    </select><br/>
+    <br/>
+
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            message: '',
+            message1: '',
+            checked: '',
+            checkedGroup: [],
+            picked: '',
+            selected1: '',
+            selected2: [],
+            selected3: '',
+            options: [
+                {text: 'One', value: 1},
+                {text: 'Two', value: 2},
+                {text: 'Three', value: 3}
+            ]
+        }
+    });
+</script>
+</body>
+</html>

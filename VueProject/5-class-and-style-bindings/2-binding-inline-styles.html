@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定内联样式</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app1">
+    <!-- v-bind:style语法非常像CSS 实际是JavaScript对象 -->
+    <!-- property 名可以用驼峰式 (camelCase) 或短横线分隔 (kebab-case，用引号括起来) 来命名 -->
+    <div v-bind:style="{color:color, fontSize:size, background: isRed ? '#FF0000' : ''}">
+        hi vue1
+    </div>
+    <!-- 使用对象语法渲染 -->
+    <!-- 可以结合计算属性使用 -->
+    <div v-bind:style="styleObject">
+        hi vue2
+    </div>
+    <!-- 使用数组语法渲染 -->
+    <div v-bind:style="[styleObject, styleObject2]">
+        hi vue3
+    </div>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app1",
+        data: {
+            color: "#FFFFFF",
+            size: '50px',
+            isRed: true,
+            styleObject: {
+                color: 'red',
+                fontSize: '33px'
+            },
+            styleObject2: {
+                background: 'blue'
+            }
+        }
+    })
+</script>
+</body>
+</html>

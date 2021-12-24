@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>冻结对象</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{ foo }}</p>
+    <!-- 这里的 `foo` 不会更新！ -->
+    <button v-on:click="foo = 'baz'">Change it</button>
+</div>
+<script>
+    var obj = {
+        foo: 'bar'
+    }
+
+    // Object.freeze()会阻止修改property
+    Object.freeze(obj);
+
+    var vm = new Vue({
+        el: '#app',
+        data: obj
+    })
+</script>
+</body>
+</html>

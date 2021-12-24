@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表渲染</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <!-- v-for指令 基于一个数组来渲染一个列表 -->
+        <!-- (item of items) items是源数据数组 item是被迭代的数组元素的别名 -->
+        <!-- 第二参数index可选 (当前项的索引) -->
+        <!-- 可以使用of替代in 更符合js迭代器语法(item of items) -->
+        <!-- 在使用v-for时尽可能提供一个唯一的key，便于vue追踪每个节点从而重用和重排序 -->
+        <li v-for="(item, index) in items" v-bind:key="item.id">
+            {{parentMessage}} - {{index}} - {{item.message}}
+        </li>
+    </ul>
+    <ul>
+        <!-- v-for也可用于遍历对象property -->
+        <!-- (value in object) object是源数据对象 value是被迭代的对象property别名 -->
+        <!-- 第二参数key可选 (键名) -->
+        <!-- 第三参数index可选 (索引) -->
+        <li v-for="(value, key, index) in object">
+            {{index}} - {{key}} : {{value}}
+        </li>
+    </ul>
+
+    <!-- v-for也可以接收整数 此时会把模版重复对应次数 -->
+    <span v-for="n in 10">{{ n }} </span>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            parentMessage: 'Parent',
+            items: [
+                {id: 0, message: 'Foo'},
+                {id: 2, message: 'Bar'}
+            ],
+            object: {
+                title: 'How to do lists in Vue',
+                author: 'Jane Doe',
+                publishedAt: '2016-04-10'
+            }
+        }
+    })
+    setTimeout(function () {
+        vm.items.splice(1, 0, {id: 1, message: '111'});
+        vm.object.info = 'add info';
+    }, 3000);
+</script>
+</body>
+</html>

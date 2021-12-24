@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>侦听器</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="watch-example">
+    <p>{{message}}</p>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#watch-example',
+        data: {
+            message: 'Hello World!'
+        },
+        // 使用watch选项定义`message`数据的监听器
+        watch: {
+            // `message`发生改变，则运行该函数
+            message: function (newValue, oldValue) {
+                alert('new value: ' + newValue +', old value: ' + oldValue);
+            }
+        }
+    });
+
+    setTimeout(function () {
+        vm.message = 'Hello Vue!';
+    }, 3000);
+</script>
+</body>
+</html>

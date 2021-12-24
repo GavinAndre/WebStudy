@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for与v-if一同使用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <!-- 使用计算属性配合v-for显示过滤/排序后的结果 -->
+        <!-- 不将v-for与v-if同时用在同一个元素上(低效) -->
+        <li v-for="todo in completedTodos" v-bind:key="todo.id"> {{todo.todo}}</li>
+    </ul>
+
+    <!-- 将v-if置于循环的外层 -->
+    <ul v-if="completedTodos.length !== todos.length">
+        <li v-for="todo in todos" v-bind:key="todo.id"> {{todo}}</li>
+    </ul>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            todos: [
+                {id: 0, todo: "todo1", isComplete: false},
+                {id: 1, todo: "todo2", isComplete: true},
+                {id: 2, todo: "todo3", isComplete: false},
+            ]
+        },
+        computed: {
+            completedTodos: function () {
+                return this.todos.filter(function (value) {
+                    return value.isComplete;
+                })
+            }
+        }
+    })
+    setTimeout(function () {
+        vm.todos[0].isComplete = true;
+    }, 1500);
+    setTimeout(function () {
+        vm.todos[2].isComplete = true;
+    }, 3000);
+</script>
+</body>
+</html>

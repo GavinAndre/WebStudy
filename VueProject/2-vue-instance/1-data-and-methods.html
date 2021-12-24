@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据与方法</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{ a }}
+</div>
+<script>
+    var data = {
+        a: 1,
+        // b: 0
+    };
+
+    // 当Vue实例创建时，会将data对象中所有property加入Vue的响应式系统中
+    var vm = new Vue({
+        el: "#app",
+        data: data
+    });
+
+    // $watch 是一个实例方法
+    vm.$watch('a', function (newVal, oldVal) {
+        // 这个回调将在 `vm.a` 改变后调用
+        console.log("property a, newVal: " + newVal, ", oldVal: " + oldVal);
+    });
+
+    vm.$watch('b', function (newVal, oldVal) {
+        console.log("property b, newVal: " + newVal, ", oldVal: " + oldVal);
+    });
+
+    // 当property发生改变时，视图会重渲染，更新为新的值
+    setTimeout(function () {
+        vm.$data.a = "change";
+    }, 1500);
+    // 改变原始数据也会重渲染
+    setTimeout(function () {
+        data.a = 3;
+    }, 3000);
+
+    // 实例被创建时data中的property才是响应式的
+    // 实例创建完后，新添加的property改动不会触发更新
+    setTimeout(function () {
+        vm.b = 'hi';
+    }, 4500);
+
+
+    console.log("vm.$data === data", vm.$data === data);
+    console.log("vm.a === data.a", vm.a === data.a);
+
+</script>
+</body>
+</html>

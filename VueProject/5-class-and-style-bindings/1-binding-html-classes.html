@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定HTML Class</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .text {
+            font-size: 30px
+        }
+
+        .active {
+            background: red;
+        }
+
+        .green {
+            color: #00ff00;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!-- v-bind:class可以接收对象来动态切换class -->
+    <!-- 当对象中isActive与isGreen都为true时 -->
+    <!-- 会渲染为class='text active green' -->
+    <div class='text'
+         v-bind:class="{active: isActive, green: isGreen}"
+         style="width:200px; height:200px;text-align: center; line-height: 200px;">
+        hi vue1
+    </div>
+    <!-- 使用对象语法渲染 -->
+    <!-- 可以结合计算属性使用 -->
+    <div class='text'
+         v-bind:class="classObject"
+         style="width:200px; height:200px;text-align: center; line-height: 200px;">
+        hi vue2
+    </div>
+    <!-- 使用数组语法渲染 -->
+    <!-- 可以使用三目表达式 -->
+    <div class='text'
+         v-bind:class="[ isActive? activeClass: '', greenClass]"
+         style="width:200px; height:200px;text-align: center; line-height: 200px;">
+        hi vue3
+    </div>
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            isActive: true,
+            isGreen: true,
+            activeClass: 'active',
+            greenClass: 'green'
+        },
+        computed: {
+            classObject: function () {
+                return {
+                    active: this.isActive,
+                    green: this.isGreen
+                }
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指令与缩写</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- 使用v-if指令来插入或移除p元素 -->
+    <p v-if="seen">现在你看到我了</p>
+
+    <!-- v-bind与v-on 能使用":"接收参数  -->
+    <!-- :href 表示将该元素的href attribute与url的值绑定 -->
+    <a v-bind:href="url">模版语法</a>
+    <!-- v-bind缩写 可以直接省略前面的v-bind -->
+    <a :href="url">模版语法</a>
+
+    <!-- v-on指令 用于监听DOM事件 -->
+    <!-- v-on:click 表示监听该元素的click事件 -->
+    <div v-on:click="click1">
+        <!-- 修饰符 (modifier) 是以半角句号 . 指明的特殊后缀 -->
+        <!-- .stop 表示阻止点击事件继续传递(阻止传递到click1) -->
+        <!-- v-on缩写 使用@代替v-on-->
+        <div @click.stop="click2">
+            点击显示/隐藏
+        </div>
+    </div>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            seen: false,
+            url: "https://cn.vuejs.org/v2/guide/syntax.html#%E6%8C%87%E4%BB%A4"
+        },
+        methods: {
+            click1: function () {
+                alert("on click 1");
+            },
+            click2: function () {
+                this.seen = !this.seen;
+            }
+        }
+    });
+</script>
+</body>
+</html>

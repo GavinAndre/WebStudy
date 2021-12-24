@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修饰符</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app2">
+    <!-- .lazy修饰符 在change事件之后更新 -->
+    <span>lazy: {{message}}</span><br/>
+    <input v-model.lazy="message" placeholder="edit me"><br/>
+    <br/>
+
+    <!-- .number修饰符 自动将输入值转为数值类型 -->
+    <span>number: {{age}}</span><br/>
+    <input v-model.number="age" type="number"><br/>
+    <br/>
+
+    <!-- .trim修饰符 自动过滤首尾空白字符 -->
+    <span>trim: {{msg}}</span><br/>
+    <input v-model.trim="msg"/>
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app2',
+        data: {
+            message: '',
+            age: undefined,
+            msg: ''
+        },
+        watch: {
+            age: function (newValue, oldValue) {
+                console.log(typeof newValue)
+            },
+            msg: function (newValue, oldValue) {
+                console.log(newValue)
+            }
+        }
+    })
+</script>
+</html>

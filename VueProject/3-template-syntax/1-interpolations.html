@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插值</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        #id_red {
+            color: red;
+            font-size: 50px;
+        }
+
+        .clz_blue {
+            color: blue;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!-- "Mustache"语法文本插值 -->
+    <p>Message: {{msg}}</p>
+    <!-- 使用v-once指令插值 数值不会更新 -->
+    <p v-once>v-once Message: {{msg}}</p>
+
+    <!-- 使用v-html指令插值 解释为html代码 -->
+    <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+    <!-- 使用双大括号插值 解释为普通文本 -->
+    <p>Using mustaches: {{ rawHtml }}</p>
+
+    <!-- 使用v-bind指令 响应式的更新HTML attribute -->
+    <div v-bind:id="id_color">v-bind:id</div>
+    <div v-bind:class="clz_color">v-bind:class</div>
+    <!-- 对于布尔属性 如果值为null、undefined或false则不会渲染disabled属性 -->
+    <button v-bind:disabled="isButtonDisabled">Button</button>
+
+    <!-- 双大括号支持JS表达式 -->
+    <p>{{ number + 1 }}</p>
+    <!-- 使用三元表达式 不能使用if else -->
+    <p>{{ 1 === 1 ? 'YES' : 'NO' }}</p>
+    <p>{{ message.split('').reverse().join('') }}</p>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            msg: "hi vue",
+            rawHtml: '<span style="color:red">this is should be red</span>',
+            id_color: 'id_red',
+            clz_color: 'clz_blue',
+            isButtonDisabled: false,
+            number: 10,
+            ok: 1,
+            message: "vue"
+        }
+    });
+
+    setTimeout(function () {
+        vm.msg = "oh no vue";
+    }, 3000)
+</script>
+</body>
+</html>
