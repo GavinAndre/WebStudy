@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件注册</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app1">
+    <!-- 全局注册的组件能用在任何Vue实例的模版中 -->
+    <component-a></component-a>
+    <component-b></component-b>
+    <component-c></component-c>
+</div>
+<br/>
+<div id="app2">
+    <!-- 全局注册的组件能用在任何Vue实例的模版中 -->
+    <component-a></component-a>
+    <component-b></component-b>
+    <component-c></component-c>
+    <!-- 局部注册的组件只能用在被注册的Vue实例模版中 -->
+    <component-d></component-d>
+    <component-e></component-e>
+    <component-f></component-f>
+</div>
+<script>
+    <!-- 建议使用kebab-case(短横线分隔命名)定义一个组件 -->
+    Vue.component('component-a', {template: "<div>Component A</div>"})
+    Vue.component('component-b', {template: "<div>Component B</div>"})
+    Vue.component('component-c', {template: "<div>Component C</div>"})
+    new Vue({el: '#app1'})
+
+    var ComponentD = {template: "<div>Component D</div>"}
+    var ComponentE = {template: "<div>Component E</div>"}
+    var ComponentF = {template: "<div>Component F</div>"}
+    new Vue({
+        el: '#app2',
+        components: {
+            'component-d': ComponentD,
+            'component-e': ComponentE,
+            'component-f': ComponentF
+        }
+    })
+
+</script>
+</body>
+</html>
