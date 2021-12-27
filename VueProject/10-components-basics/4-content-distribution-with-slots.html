@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过插槽分发内容</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .demo-alert-box {
+            padding: 10px 20px;
+            background: #eac0ba;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #e29c9a;
+        }
+    </style>
+</head>
+<body>
+<div id="components-demo4">
+    <alert-box>{{msg}}</alert-box>
+</div>
+<script>
+    Vue.component('alert-box', {
+        template: `
+        <div class="demo-alert-box">
+        <strong>Error!</strong>
+        <!-- 使用Vue自定义的<slot>元素来加入插槽(替换成组件实例的内容) -->
+        <slot></slot>
+        </div>`
+    })
+    new Vue({
+        el: '#components-demo4',
+        data: {
+            msg: 'Something bad happened.'
+        }
+    })
+</script>
+</body>
+</html>

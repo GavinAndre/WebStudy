@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>监听子组件事件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="components-demo3" :style="{fontSize: postFontSize + 'em'}">
+    <!-- 使用v-on来监听子组件定义的任意事件 -->
+    <!-- 在组件实例中实现具体的事件逻辑 -->
+    <!-- 使用$event访问模版中提供的特定值 -->
+    <blog-post1 title="title-1"
+                v-on:enlarge-text="postFontSize +=0.1"
+                v-on:reduce-text="postFontSize -=$event"
+                v-on:reset-text="onResetText($event)">
+    </blog-post1>
+
+    <!-- 在组件上使用v-model -->
+    <p>{{text1}}</p>
+    <blog-post2 v-model="text1"></blog-post2>
+</div>
+<script>
+    Vue.component('blog-post1', {
+        props: ['title'],
+        template: `
+          <div>
+          <h3>{{ title }}</h3>
+          <!-- 模版中定义出发方式与调用方法-->
+          <!-- 调用内建的$emit方法并传入事件名称来触发事件 -->
+          <button v-on:click="$emit('enlarge-text')">
+            Enlarge Text
+          </button>
+          <!-- $emit方法第二个参数为定义的事件提供特定值 -->
+          <button v-on:click="$emit('reduce-text', 0.1)">
+            Reduce Text
+          </button>
+          <button v-on:click="$emit('reset-text', 1)">
+            Reset Text
+          </button>
+          </div>`
+    })
+    Vue.component('blog-post2', {
+        // 在组件上使用v-model需要使用如下代码
+        // 将其 value attribute 绑定到一个名叫 value 的 prop 上
+        // 在其 input 事件被触发时，将新的值通过自定义的 input 事件抛出
+        props: ['value'],
+        template: `
+          <input
+              v-bind:value="value"
+              v-on:input="$emit('input', $event.target.value)"/>
+        `
+    })
+    new Vue({
+        el: '#components-demo3',
+        data: {
+            postFontSize: 1,
+            text1: "123"
+        },
+        methods: {
+            onResetText: function (resetValue) {
+                this.postFontSize = resetValue;
+            }
+        }
+    })
+</script>
+</body>
+</html>

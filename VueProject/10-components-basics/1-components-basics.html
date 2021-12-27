@@ -6,7 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 <body>
-<div id="components-demo">
+<div id="components-demo1">
     <!-- 组件是可复用的Vue实例 -->
     <button-counter></button-counter>
     <button-counter></button-counter>
@@ -15,7 +15,7 @@
 <script>
     // Vue.component 全局注册组件
     Vue.component('button-counter', {
-        // 定义组件时data必须是一个函数
+        // 组件内定义data时必须是一个函数
         // 每个实例维护一份返回对象的独立拷贝
         data: function () {
             return {
@@ -26,7 +26,7 @@
     })
     // 经过全局注册的组件可以用在任何新创建的Vue根实例(new Vue)
     new Vue({
-        el: '#components-demo'
+        el: '#components-demo1'
     })
 </script>
 </body>

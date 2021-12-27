@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>向子组件传递数据</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="components-demo2">
+    <!-- title2 自定义的attribute -->
+    <!-- 将数据传递到自定义component中 -->
+    <blog-post1 title2="title-2"></blog-post1>
+    <!-- 通过v:bind动态传递prop -->
+    <blog-post2 v-for="post in posts"
+                v-bind:key="post.id"
+                v-bind:post="post"></blog-post2>
+</div>
+<script>
+    Vue.component('blog-post1', {
+        // 使用prop自定义一个attribute
+        props: ['title2'],
+        // 在模版中使用通过prop传递的数据
+        template: `<h3>{{ title2 }}</h3>`
+    })
+    Vue.component('blog-post2', {
+        props: ['post'],
+        // 模版只能有一个根元素(使用div标签包裹内容)
+        template: `
+          <div>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.content }}</p>
+          </div>`
+    })
+    new Vue({
+        el: '#components-demo2',
+        data: {
+            posts: [
+                {id: 1, title: 'title-aaa', content: 'content-aaa'},
+                {id: 2, title: 'title-bbb', content: 'content-bbb'},
+                {id: 3, title: 'title-ccc', content: 'content-ccc'},
+            ]
+        }
+    })
+</script>
+</body>
+</html>

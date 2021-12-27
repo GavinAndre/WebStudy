@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>动态组件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .tab-button {
+            padding: 6px 10px;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background: #f0f0f0;
+            margin-bottom: -1px;
+            margin-right: -1px;
+        }
+
+        .tab-button:hover {
+            background: #e0e0e0;
+        }
+
+        .tab-button.active {
+            background: #e0e0e0;
+        }
+
+        .tab {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="dynamic-component-demo1" class="demo">
+    <button v-for="tab in tabs"
+            v-bind:key="tab"
+            v-bind:class="['tab-button', { active: currentTab === tab }]"
+            v-on:click="currentTab = tab">
+        {{ tab }}
+    </button>
+    <!-- 使用v-bind:is指定已注册组件的名字 -->
+    <component v-bind:is="currentTabComponent" class="tab"></component>
+</div>
+<br/>
+<div id="dynamic-component-demo2" class="demo">
+    <button v-for="tab in tabs"
+            v-bind:key="tab.name"
+            v-bind:class="['tab-button', { active: currentTab.name === tab.name }]"
+            v-on:click="currentTab = tab">
+        {{ tab.name }}
+    </button>
+    <!-- 使用v-bind:is指定组件的选项对象 -->
+    <component v-bind:is="currentTab.component" class="tab"></component>
+</div>
+
+<script>
+    // 使用已注册组件名示例
+    Vue.component("tab-home", {
+        template: "<div>Home component</div>"
+    });
+    Vue.component("tab-posts", {
+        template: "<div>Posts component</div>"
+    });
+    Vue.component("tab-archive", {
+        template: "<div>Archive component</div>"
+    });
+    new Vue({
+        el: "#dynamic-component-demo1",
+        data: {
+            currentTab: "Home",
+            tabs: ["Home", "Posts", "Archive"]
+        },
+        computed: {
+            currentTabComponent: function () {
+                return "tab-" + this.currentTab.toLowerCase();
+            }
+        }
+    });
+
+    // 使用组件的选项对象示例
+    var tabs = [
+        {
+            name: "Home",
+            component: {
+                template: "<div>Home component</div>"
+            }
+        },
+        {
+            name: "Posts",
+            component: {
+                template: "<div>Posts component</div>"
+            }
+        },
+        {
+            name: "Archive",
+            component: {
+                template: "<div>Archive component</div>"
+            }
+        }
+    ];
+    new Vue({
+        el: "#dynamic-component-demo2",
+        data: {
+            tabs: tabs,
+            currentTab: tabs[0]
+        }
+    });
+</script>
+</body>
+</html>
