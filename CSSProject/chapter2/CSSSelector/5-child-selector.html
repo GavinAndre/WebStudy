@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后代选择器</title>
+    <style type="text/css">
+        /*父元素和后代元素必须要用空格隔开，表示选中某个元素内部的后代元素*/
+        #father1 div {
+            color: red;
+        }
+
+        #father2 span {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="father1">
+    <div>后代选择器</div>
+    <div>后代选择器</div>
+</div>
+<div id="father2">
+    <p>后代选择器</p>
+    <p>后代选择器</p>
+    <span>后代选择器</span>
+</div>
+</body>
+</html>

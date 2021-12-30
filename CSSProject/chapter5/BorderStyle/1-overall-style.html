@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>整体样式</title>
+    <!--border-width	边框的宽度-->
+    <!--    取值一般为px-->
+    <!--border-style	边框的外观-->
+    <!--    none	无样式-->
+    <!--    dashed	虚线-->
+    <!--    solid	实线-->
+    <!--border-color	边框的颜色-->
+    <!--    取值为关键字或16进制RGB值-->
+    <style>
+        div {
+            width: 100px;
+            height: 30px;
+        }
+
+        #div1 {
+            border-width: 1px;
+            border-style: dashed;
+            border-color: red;
+        }
+
+        #div2 {
+            border-width: 1px;
+            border-style: solid;
+            border-color: red;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: red;
+        }
+
+        /*简写形式*/
+        #div3 {
+            border: 1px solid red;
+        }
+
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<br/>
+<div id="div2"></div>
+<br/>
+<img src="https://p92.com/binaries/content/gallery/p92website/technologies/htmlcssjs-overview.png" alt="海贼王之索隆">
+<div id="div3">边框样式简写</div>
+</body>
+</html>

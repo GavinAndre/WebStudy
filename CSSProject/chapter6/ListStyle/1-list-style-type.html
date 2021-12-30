@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表项符号</title>
+    <style>
+        /*ol列表的list-style-type属性*/
+        /*decimal	阿拉伯数字：1、2、3…（默认值）*/
+        /*lower-roman	小写罗马数字：i、ii、iii…*/
+        /*upper-roman	大写罗马数字：I、II、III…*/
+        /*lower-alpha	小写英文字母：a、b、c…*/
+        /*upper-alpha	大写英文字母：A、B、C…*/
+        ol {
+            list-style-type: lower-roman;
+        }
+
+        /*ul列表的list-style-type属性*/
+        /*disc	实心圆●（默认值）*/
+        /*circle	空心圆○*/
+        /*square	正方形■*/
+        ul {
+            list-style-type: circle;
+        }
+
+        /*使用none去除符号*/
+        .no_style_list {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+<h3>有序列表</h3>
+<ol>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+</ol>
+<h3>无序列表</h3>
+<ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+</ul>
+<h3>无符号有序列表</h3>
+<ol class="no_style_list">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+</ol>
+<h3>无符号无序列表</h3>
+<ul class=no_style_list>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+</ul>
+</body>
+</html>

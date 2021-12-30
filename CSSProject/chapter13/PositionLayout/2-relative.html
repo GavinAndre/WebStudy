@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>相对定位：relative</title>
+    <!--position:relative 设置元素相对原始的位置-->
+    <!--top: 像素值-->
+    <!--bottom: 像素值-->
+    <!--left: 像素值-->
+    <!--right: 像素值-->
+    <style>
+        #father {
+            display: inline-block;
+            width: 300px;
+            height: 230px;
+            margin-top: 30px;
+            margin-left: 30px;
+            border: 1px solid silver;
+            background-color: lightskyblue;
+        }
+
+        #father div {
+            width: 100px;
+            height: 60px;
+            margin: 10px;
+            background-color: hotpink;
+            color: white;
+            border: 1px solid white;
+        }
+
+        #son2 {
+            position: relative;
+            top: 20px;
+            left: 40px;
+        }
+    </style>
+</head>
+<body>
+<div id="father">
+    <div id="son1">第1个无定位的div元素</div>
+    <div id="son2">相对定位的div元素</div>
+    <div id="son3">第2个无定位的div元素</div>
+</div>
+</body>
+</html>

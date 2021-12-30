@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字体类型</title>
+    <!--font-family	字体类型-->
+    <style>
+        #div1 {
+            font-family: Arial;
+        }
+        /*字体类型是多个英文单词或者中文，需要加上双引号*/
+        #div2 {
+            font-family: "Times New Roman";
+        }
+
+        #div3 {
+            font-family: "Heiti SC";
+        }
+        /*可以指定多种字体，以逗号分隔*/
+        /*如果没有指定的字体，则按从左往右的优先级选择字体，*/
+        p {
+            font-family: Arial, Verdana, Georgia;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">Arial</div>
+<div id="div2">Times New Roman</div>
+<div id="div3">黑体</div>
+<p>Rome was not built in a day.</p>
+</body>
+</html>

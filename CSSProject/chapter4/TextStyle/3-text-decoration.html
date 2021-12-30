@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本修饰</title>
+    <!--text-decoration	文本修饰-->
+    <!--none	        无划线（默认值）-->
+    <!--underline	    下划线-->
+    <!--line-through	中划线-->
+    <!--overline	    顶划线-->
+    <style>
+        #p1 {
+            text-decoration: underline;
+        }
+
+        #p2 {
+            text-decoration: line-through;
+        }
+
+        #p3 {
+            text-decoration: overline;
+        }
+
+        a {
+            /*去除超链接的下划线样式*/
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<p id="p1">这是“下划线”效果</p>
+<p id="p2">这是“删除线”效果</p>
+<p id="p3">这是“顶划线”效果</p>
+<a href="https://www.baidu.com" target="_blank">百度一下</a>
+</body>
+</html>

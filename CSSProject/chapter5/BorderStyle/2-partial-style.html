@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>局部样式</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 60px;
+            border-left: 2px solid green;
+            border-top: 2px solid red;
+            border-right: 2px solid yellow;
+            border-bottom: 2px solid blue;
+        }
+
+        #div2 {
+            width: 100px;
+            height: 60px;
+            border: 1px solid red;
+            /*去除某一条边框*/
+            border-bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<br/>
+<div id="div2"></div>
+</body>
+</html>

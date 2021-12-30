@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片垂直对齐</title>
+    <style>
+        img {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+
+        /*图片垂直对齐使用vertical-align属性*/
+        /*vertical-align属性定义周围的行内元素或文本相对于该元素的垂直方式*/
+        /*top	顶部对齐*/
+        /*middle	中部对齐*/
+        /*baseline	基线对齐*/
+        /*bottom	底部对齐*/
+        #img1 {
+            vertical-align: top;
+        }
+
+        #img2 {
+            vertical-align: middle;
+        }
+
+        #img3 {
+            vertical-align: bottom;
+        }
+
+        #img4 {
+            vertical-align: baseline;
+        }
+    </style>
+</head>
+<body>
+顶部对齐<img id="img1" src="https://p92.com/binaries/content/gallery/p92website/technologies/htmlcssjs-overview.png"
+         alt="HTML"/>顶部对齐(top)
+<hr/>
+中部对齐<img id="img2" src="https://p92.com/binaries/content/gallery/p92website/technologies/htmlcssjs-overview.png"
+         alt="HTML"/>中部对齐(middle)
+<hr/>
+底部对齐<img id="img3" src="https://p92.com/binaries/content/gallery/p92website/technologies/htmlcssjs-overview.png"
+         alt="HTML"/>底部对齐(bottom)
+<hr/>
+基线对齐<img id="img4" src="https://p92.com/binaries/content/gallery/p92website/technologies/htmlcssjs-overview.png"
+         alt="HTML"/>基线对齐(baseline)
+<hr/>
+</body>
+</html>

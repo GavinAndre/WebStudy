@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>背景图片重复</title>
+    <!--background-repeat	定义背景图片重复，例如横向重复、纵向重复-->
+    <!--repeat	在水平方向和垂直方向上同时平铺（默认值）-->
+    <!--repeat-x	只在水平方向（x轴）上平铺-->
+    <!--repeat-y	只在垂直方向（y轴）上平铺-->
+    <!--no-repeat	不平铺-->
+    <style>
+        div {
+            width: 128px;
+            height: 64px;
+            border: 1px solid silver;
+            background-image: url("img/apple.png");
+        }
+
+        #div2 {
+            background-repeat: repeat-x;
+        }
+
+        #div3 {
+            background-repeat: repeat-y;
+        }
+
+        #div4 {
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+<div id="div4"></div>
+</body>
+</html>

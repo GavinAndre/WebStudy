@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动</title>
+    <!--float属性 设置周围元素环绕效果-->
+    <!--left	元素向左浮动-->
+    <!--right	元素向右浮动-->
+    <style>
+        /*定义父元素样式*/
+        #father {
+            width: 300px;
+            background-color: #0C6A9D;
+            border: 1px solid silver;
+        }
+
+        /*定义子元素样式*/
+        #father div {
+            padding: 10px;
+            margin: 15px;
+        }
+
+        #son1 {
+            background-color: hotpink;
+            /*这里设置son1的浮动方式*/
+            float: left;
+        }
+
+        #son2 {
+            background-color: #FCD568;
+            /*这里设置son2的浮动方式*/
+            float: right;
+        }
+
+        /*clear属性 清除浮动带来的影响*/
+        /*left	清除左浮动*/
+        /*right	清除右浮动*/
+        /*both	同时清除左浮动和右浮动*/
+        .clear {
+            /*增加空元素定义clear: both*/
+            /*来清除该元素的兄弟元素浮动之后带来的影响*/
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+<div id="father">
+    <div id="son1">Box1</div>
+    <div id="son2">Box2</div>
+    <div class="clear"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内边距：padding</title>
+    <style>
+        div {
+            /*将块元素转换为inline-block元素, 否则显示整行*/
+            display: inline-block;
+            border: 2px solid red;
+            background-color: #FFDEAD;
+        }
+
+        #div1 {
+            padding-top: 20px;
+            padding-right: 40px;
+            padding-bottom: 60px;
+            padding-left: 80px;
+        }
+
+        /*padding属性简写形式 常用三种*/
+        /*padding:20px*/
+        /*    表示4个方向的内边距都是20px*/
+        /*padding:20px 40px*/
+        /*    表示padding-top和padding-bottom为20px，padding-right和padding-left为40px*/
+        /*padding:20px 40px 60px 80px*/
+        /*    表示padding-top为20px，padding-right为40px，padding-bottom为60px，padding-left为80px*/
+        #div2 {
+            padding: 40px 80px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">内边距：padding</div>
+<br/>
+<br/>
+<div id="div2">内边距：padding</div>
+</body>
+</html>
