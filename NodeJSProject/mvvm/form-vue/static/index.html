@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/vue.js"></script>
+
+    <script>
+        $(function () {
+            var vm = new Vue({
+                el: "#vm",
+                data: {
+                    email: '',
+                    name: ''
+                },
+            });
+            window.vm = vm;
+        });
+    </script>
+</head>
+
+<body>
+    <form id="vm" action="#">
+        <div>
+            <p>Name:</p>
+            <p><input v-model="name"></p>
+        </div>
+        <div>
+            <p>Email:</p>
+            <p><input v-model="email"></p>
+        </div>
+    </form>
+</body>
+
+</html>
