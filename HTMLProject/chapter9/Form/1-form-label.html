@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form标签</title>
+</head>
+<body>
+<!--name	表单名称 用于区分不同表单-->
+<!--method	提交方式 指定HTTP请求方法(get/post)-->
+<!--action	提交地址 指定表单数据的提交地址-->
+<!--target	打开方式 指定窗口打开方式，一般只用_blank-->
+<!--enctype	编码方式 除非上传文件，一般不设置-->
+<form name="myForm" method="post" action="index.php" target="_blank">
+    <input type="text" value="这是一个文本框"/><br/>
+    <textarea>这是一个多行文本框</textarea><br/>
+    <select>
+        <option>HTML</option>
+        <option>CSS</option>
+        <option>JavaScript</option>
+    </select>
+</form>
+</body>
+</html>

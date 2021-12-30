@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>按钮</title>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById("button");
+            btn.onclick = function () {
+                alert("普通按钮");
+            };
+        };
+    </script>
+</head>
+<body>
+<!--button  普通按钮 一般配合JavaScript执行操作-->
+<!--submit  提交按钮 一般提交数据到后台-->
+<!--reset   重置按钮 一般清除表单内容-->
+<form method="post">
+    账号:<input type="text"/><br/>
+    密码:<input type="password"/><br/>
+    <input id="button" type="button" value="确定"/>
+    <input type="submit" value="提交"/>
+    <input type="reset" value="重置"/>
+</form>
+</body>
+</html>
